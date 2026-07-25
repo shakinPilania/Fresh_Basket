@@ -51,6 +51,7 @@ function Navbar() {
                 </div>
             </NavLink>
         </div>
+        {/* basket part  */}
         <div>
             <NavLink to={"/basket"} >
                 <div className='flex justify-center items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-sm text-white bg-green-600 hover:bg-green-700 plusJakarta text-[14px] transition-all duration-300  '>
