@@ -1,13 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link,NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { Leaf ,Home,ShoppingBag, Info, MessageSquare ,ShoppingBasket } from 'lucide-react'
-//! import the page for linking 
-// import Home from '../Pages/Home'
-// import Shop from '../Pages/Shop'
-// import About from '../Pages/About'
-// import Contact from '../Pages/Contact'
-// import Basket from '../Pages/Basket'
+
+//! import the css file of navbar 
+import "./Navbar.css"
 
 function Navbar() {
 
@@ -29,13 +26,38 @@ function Navbar() {
             </div>
         </div>
         <div className='flex gap-5'>
-            <Link to={"/"} ><button className='flex'><span><Home/></span>Home</button></Link>
-            <Link to={"/shop"} ><button className='flex'><span><ShoppingBag/></span>Shop</button></Link>
-            <Link to={"/about"} ><button className='flex'><span><Info/></span>About</button></Link>
-            <Link to={"/contact"} ><button className='flex'><span><MessageSquare/></span>Contact</button></Link>
+            <NavLink to={"/"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg"} >
+                <div className='flex justify-center items-center gap-1.5 px-4 py-2  text-sm plusJakarta cursor-pointer'>
+                    <span ><Home size={15}/></span>
+                    <button>Home</button>
+                </div>
+            </NavLink>
+            <NavLink to={"/shop"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg"} >
+                <div className='flex justify-center items-center gap-1.5 px-4 py-2  text-sm plusJakarta cursor-pointer'>
+                    <span><ShoppingBag size={15} /></span>
+                    <button className='flex  '>Shop</button>
+                </div>
+            </NavLink>
+            <NavLink to={"/about"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg"} >
+                <div className='flex justify-center items-center gap-1.5 px-4 py-2  text-sm plusJakarta cursor-pointer'>
+                    <span><Info size={15} /></span>
+                    <button className='flex'>About</button>
+                </div>
+            </NavLink>
+            <NavLink to={"/contact"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg"} >
+                <div className='flex justify-center items-center gap-1.5 px-4 py-2  text-sm  plusJakarta  cursor-pointer'>
+                    <span><MessageSquare size={15} /></span>
+                    <button className='flex'>Contact</button>
+                </div>
+            </NavLink>
         </div>
         <div>
-            <Link to={"/basket"} ><button className='flex'><span><ShoppingBasket/></span>Basket</button></Link>
+            <NavLink to={"/basket"} >
+                <div className='flex justify-center items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-sm text-white bg-green-600 hover:bg-green-700 plusJakarta text-[14px] transition-all duration-300  '>
+                    <span><ShoppingBasket size={17}/></span>
+                    <button className='flex'>Basket</button>
+                </div>
+            </NavLink>
         </div>
     </div>
   )
