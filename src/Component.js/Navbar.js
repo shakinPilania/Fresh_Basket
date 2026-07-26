@@ -15,7 +15,7 @@ function Navbar() {
     }
 
   return (
-    <div className='flex justify-evenly items-center h-16 shadow-md '>
+    <div className='flex justify-center  md:justify-evenly md:items-center h-16 shadow-md '>
         <div className='flex group gap-2 cursor-pointer' onClick={HomeBack}>
             <div className=' mt-[1px] w-9 h-9 flex justify-center items-center bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-md group-hover:scale-110 transition-all duration-300 transition-transform cursor-default '>
                 <Leaf size={18} className='text-white' />
@@ -54,7 +54,7 @@ function Navbar() {
         {/* basket part  */}
         <div>
             <NavLink to={"/basket"} >
-                <div className='flex justify-center items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-sm text-white bg-green-600 hover:bg-green-700 plusJakarta text-[14px] transition-all duration-300  '>
+                <div className='flex justify-center items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-sm text-white bg-green-600 hover:bg-green-700 plusJakarta text-sm transition-all duration-300  '>
                     <span><ShoppingBasket size={17}/></span>
                     <button className='cursor-pointer'>Basket</button>
                 </div>
