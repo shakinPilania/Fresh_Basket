@@ -15,7 +15,7 @@ function Navbar() {
     }
 
   return (
-    <div className='flex justify-center  md:justify-evenly md:items-center h-16 shadow-md '>
+    <div className=' sticky top-0 bg-white flex justify-center  md:justify-evenly md:items-center h-16 shadow-md '>
         <div className='flex group gap-2 cursor-pointer' onClick={HomeBack}>
             <div className=' mt-[1px] w-9 h-9 flex justify-center items-center bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-md group-hover:scale-110 transition-all duration-300 transition-transform cursor-default '>
                 <Leaf size={18} className='text-white' />

@@ -18,7 +18,7 @@ function CoreValue() {
             <InnerCore emoji={"♻️"} txt1={"Zero Waste"} txt2={"Our packaging is 100% compostable."} />
             <InnerCore emoji={"🔬"} txt1={"Quality Tested"} txt2={"Every batch is tested for pesticides and freshness."}/>
         </div>
-        <button className=' text-white font-bold bg-green-600 hover:bg-green-700 rounded-xl shadow-md transition-all duration-300 px-8 py-3 mt-10 ' onClick={()=>{navigate("/shop")}}  >Start Shopping </button>
+        <button className='cursor-pointer text-white font-bold bg-green-600 hover:bg-green-700 rounded-xl shadow-md transition-all duration-300 px-8 py-3 mt-10 ' onClick={()=>{navigate("/shop")}}  >Start Shopping </button>
     </div>
   )
 }
