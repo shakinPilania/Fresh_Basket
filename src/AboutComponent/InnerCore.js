@@ -3,7 +3,7 @@ import React from 'react'
 
 function InnerCore({emoji , txt1 , txt2}) {
   return (
-    <div className='flex  gap-4 border border-[#1c1a161a] rounded-2xl p-6 shadow-md hover:scale-101 transition-all duration-300 hover:z-[10px] ' >
+    <div className='flex  gap-4 border border-[#1c1a161a] rounded-2xl p-6 shadow-md hover:scale-101 transition-all duration-300  ' >
         <div className='text-[30px]' >
             {emoji}
         </div>

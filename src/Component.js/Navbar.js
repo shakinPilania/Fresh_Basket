@@ -15,7 +15,7 @@ function Navbar() {
     }
 
   return (
-    <div className=' sticky top-0 bg-white flex justify-center  md:justify-evenly md:items-center h-16 shadow-md '>
+    <div className=' sticky top-0 bg-white flex justify-center z-100  md:justify-evenly items-center h-16 shadow-md '>
         <div className='flex group gap-2 cursor-pointer' onClick={HomeBack}>
             <div className=' mt-[1px] w-9 h-9 flex justify-center items-center bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-md group-hover:scale-110 transition-all duration-300 transition-transform cursor-default '>
                 <Leaf size={18} className='text-white' />
@@ -28,26 +28,26 @@ function Navbar() {
         <div className='flex gap-5'>
             <NavLink to={"/"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg"} >
                 <div className='flex justify-center items-center gap-1.5 px-4 py-2  text-sm plusJakarta'>
-                    <span ><Home size={15}/></span>
-                    <button className='cursor-pointer'>Home</button>
+                    <span  ><Home size={15}/></span>
+                    <button className='cursor-pointer hidden md:block '>Home</button>
                 </div>
             </NavLink>
             <NavLink to={"/shop"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg"} >
                 <div className='flex justify-center items-center gap-1.5 px-4 py-2  text-sm plusJakarta cursor-pointer'>
                     <span><ShoppingBag size={15} /></span>
-                    <button className='cursor-pointer'>Shop</button>
+                    <button className='cursor-pointer hidden md:block'>Shop</button>
                 </div>
             </NavLink>
             <NavLink to={"/about"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg"} >
                 <div className='flex justify-center items-center gap-1.5 px-4 py-2  text-sm plusJakarta'>
                     <span><Info size={15} /></span>
-                    <button className='cursor-pointer'>About</button>
+                    <button className='cursor-pointer hidden md:block'>About</button>
                 </div>
             </NavLink>
             <NavLink to={"/contact"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg"} >
                 <div className='flex justify-center items-center gap-1.5 px-4 py-2  text-sm  plusJakarta  '>
                     <span><MessageSquare size={15} /></span>
-                    <button className='cursor-pointer'>Contact</button>
+                    <button className='cursor-pointer hidden md:block'>Contact</button>
                 </div>
             </NavLink>
         </div>
@@ -56,7 +56,7 @@ function Navbar() {
             <NavLink to={"/basket"} >
                 <div className='flex justify-center items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-sm text-white bg-green-600 hover:bg-green-700 plusJakarta text-sm transition-all duration-300  '>
                     <span><ShoppingBasket size={17}/></span>
-                    <button className='cursor-pointer'>Basket</button>
+                    <button className='cursor-pointer hidden md:block'>Basket</button>
                 </div>
             </NavLink>
         </div>
