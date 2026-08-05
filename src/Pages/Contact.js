@@ -3,7 +3,7 @@ import { useState } from 'react'
 //!import the component
 import Detail from '../ContactComponent/Detail'
 import Form from '../ContactComponent/Form'
-import Footer from '../Component.js/Footer'
+import Footer from '../Component/Footer'
 import Send from '../ContactComponent/Send'
 //! import the icon 
 import {Phone, Mail, MapPin} from 'lucide-react'
@@ -27,8 +27,8 @@ function Contact() {
             <Detail icon={Mail} title={"Email"} detail={"hello@freshbasket.co"} schedule={"We reply within 24h"}/>
             <Detail icon={MapPin} title={"Address"} detail={"14 Green Lane, Farmville"} schedule={"NY 10001 Bhiwani , Haryana"}/>
           </div>
-          <div>
-            {sent?(<Send/>):(<Form setSent={setSent} />)}
+          <div >
+            {sent?(<Send/>):(<Form  setSent={setSent} />)}
           </div>
         </div>
       </div>

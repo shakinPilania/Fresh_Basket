@@ -44,7 +44,7 @@ function Navbar() {
                     <button className='cursor-pointer hidden md:block'>About</button>
                 </div>
             </NavLink>
-            <NavLink to={"/contact"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg"} >
+            <NavLink to={"/contact"} className={"text-stone-600 hover:bg-stone-50 hover:text-black hover:font-bold font-semibold rounded-lg "} >
                 <div className='flex justify-center items-center gap-1.5 px-4 py-2  text-sm  plusJakarta  '>
                     <span><MessageSquare size={15} /></span>
                     <button className='cursor-pointer hidden md:block'>Contact</button>
@@ -54,7 +54,7 @@ function Navbar() {
         {/* basket part  */}
         <div>
             <NavLink to={"/basket"} >
-                <div className='flex justify-center items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-sm text-white bg-green-600 hover:bg-green-700 plusJakarta text-sm transition-all duration-300  '>
+                <div className='flex justify-center items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-sm text-white bg-green-600 hover:bg-green-700 plusJakarta text-sm transition-all duration-300 ml-2 sm:ml-3'>
                     <span><ShoppingBasket size={17}/></span>
                     <button className='cursor-pointer hidden md:block'>Basket</button>
                 </div>

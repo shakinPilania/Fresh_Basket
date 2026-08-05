@@ -4,7 +4,7 @@ import React from 'react'
 import AboutHero from "../AboutComponent/AboutHero"
 import CoreValue from "../AboutComponent/CoreValue"
 import Feature from "../AboutComponent/Feature"
-import Footer from '../Component.js/Footer'
+import Footer from '../Component/Footer'
 
 function About() {
   return (
