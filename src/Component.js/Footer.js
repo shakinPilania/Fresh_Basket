@@ -257,7 +257,7 @@ function Footer() {
       {/* bottom */}
       <div className='flex flex-row justify-between items-center mt-3 min-h-[100px]' >
         <div>
-          <span className='px-17 mt-5 plusJakarta text-xs text-center md:text-left  text-[#79716B]' >© 2025 FreshBasket. All rights reserved.</span>
+          <span className="px-4 sm:px-6 md:px-17 mt-5 block text-center md:text-left plusJakarta text-xs text-[#79716B]" >© 2025 FreshBasket.All rights reserved</span>
         </div>
         <div className='flex flex-row gap-5 px-17 plusJakarta text-base text-[#79716B] font-semibold cursor-default'>
           <span className='hover:text-stone-300 transition-all duration-200' >Privacy Policy</span>
