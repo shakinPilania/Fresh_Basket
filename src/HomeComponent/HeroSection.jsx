@@ -37,7 +37,7 @@ function HeroSection() {
                 </div>
             </div>
             <div className=' w-full  justify-evenly  bg-green-700  text-white '>
-                <div className='max-w-7xl mx-auto px-6 py-4 gap-2  grid grid-cols-2 sm:grid-cols-4 text-center text-sm font-medium  '>
+                <div className='max-w-7xl mx-auto px-6 py-4 gap-2  grid grid-cols-2 sm:grid-cols-4 text-center text-sm font-medium   '>
                 <span className='flex flex-row justify-center items-center gap-2 text-green-100'><Truck className='text-green-300' />Free delivery over $30</span>
                 <span className='flex flex-row justify-center items-center gap-2 text-green-100'><Shield className='text-green-300'/>100% fresh guarantee</span>
                 <span className='flex flex-row justify-center items-center gap-2 text-green-100'><RotateCcw className='text-green-300'/>Easy returns</span>
