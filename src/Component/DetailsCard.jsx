@@ -9,12 +9,12 @@ import Liked from './CardComponent/Liked'
 function DetailsCard({ featured, setOpen }) {
   return (
     <div onClick={()=>setOpen(false)} className='fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 '>
-        <div className='flex flex-col rounded-2xl overflow-hidden max-w-[520px]' >
-            <div className={` bg-gradient-to-br ${featured.bg} relative h-44 flex items-center justify-center  `} >
-                <div className='text-7xl group-hover:scale-110 select-none transition-all duration-300'>{featured.emoji}</div>
+        <div onClick={(e) => e.stopPropagation()} className='flex flex-col rounded-2xl overflow-hidden max-w-[520px]' >
+            <div  className={` bg-gradient-to-br ${featured.bg} relative h-56 flex items-center justify-center  `} >
+                <div className='text-9xl group-hover:scale-110 select-none transition-all duration-300'>{featured.emoji}</div>
                 <Badge featured={featured}/>
-                <div className='absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex justify-center items-center  '>
-                <X onClick={()=>setOpen(false)} size={16} />
+                <div className='absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white'>
+                <X onClick={() => setOpen(false)} size={16} />
                 </div>
             </div>
             <div className='p-6 flex flex-col gap-2 bg-white '>
