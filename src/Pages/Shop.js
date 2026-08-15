@@ -1,7 +1,7 @@
 import React from 'react'
 import { products } from '../data'
 import Card from '../Component/Card'
-import Navbar from '../Component/Navbar'
+import Footer from '../Component/Footer'
 
 function Shop() {
   return (
@@ -27,8 +27,9 @@ function Shop() {
               })
           }
         </section>
-        <Navbar/>
+        
       </div>
+      <Footer/>
     </div>
   )
 }
