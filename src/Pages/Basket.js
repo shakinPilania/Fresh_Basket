@@ -1,8 +1,13 @@
 import React from 'react'
 
+//! import the component 
+import Empty from '../BasketComponent/Empty'
+
 function Basket() {
   return (
-    <div>Basket</div>
+    <div>
+      <Empty/>
+    </div>
   )
 }
 
