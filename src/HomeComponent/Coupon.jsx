@@ -5,7 +5,7 @@ function Coupon() {
   const navigate = useNavigate();
   return (
     <div>
-        <section className='max-w-7xl mx-6 lg:mx-auto rounded-3xl  mt-14  mb-14 rounded-3xl relative bg-gradient-to-br from-green-600 to-emerald-700'>
+        <section className='max-w-7xl mx-6 lg:mx-auto rounded-3xl  rounded-3xl relative bg-gradient-to-br from-green-600 to-emerald-700'>
             <div className=' absolute leading-none select-none w-72 h-72 right-0 top-0 opacity-10 text-[200px]' >🌿</div>
             <div className='z-10 relative p-10 sm:p-14 max-w-lg flex flex-col justify-start '>
               <p className='text-xs text-green-200 font-bold mb-2 plusJakarta tracking-widest uppercase'>Limited time offer</p>
