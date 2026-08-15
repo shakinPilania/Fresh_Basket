@@ -6,9 +6,10 @@ import {Star} from 'lucide-react'
 //! import the component 
 import Badge from './CardComponent/Badge';
 import Liked from './CardComponent/Liked';
+import DetailsCard from './DetailsCard';
 
 function Card({featured}) {
-    
+    const [open , setOpen]=useState(false);
   return (
     <div >
         <div className='group flex flex-col bg-white rounded-2xl border border-[#1c1a161a] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300  '>
@@ -36,12 +37,15 @@ function Card({featured}) {
                 <div className='flex items-center justify-between pt-2 '>
                     <p className='text-xs text-[#78716C] ml-1 '><span className='text-xl font-bold text-green-700 ml-0' >${featured.price}</span>/Kg</p>
                     <div className='flex gap-2' >
-                        <button className='px-3 py-1.5 text-xs font-semibold text-green-700 border border-green-200 rounded-lg hover:bg-green-50 transition-colors cursor-pointer ' >Details </button>
+                        <button onClick={()=>{setOpen(!open)}} className='px-3 py-1.5 text-xs font-semibold text-green-700 border border-green-200 rounded-lg hover:bg-green-50 transition-colors cursor-pointer'>Details </button>
                         <button className='flex items-center gap-1 px-3 py-1.5 bg-green-600 text-white text-xs font-semibold rounded-lg hover:bg-green-700 shadow-sm transition-colors cursor-pointer' ><span>+</span>Add</button>
                     </div>
                 </div>
             </div>
         </div>
+        {
+            open && <DetailsCard featured={featured} setOpen={setOpen} />
+        }
     </div>
   )
 }
