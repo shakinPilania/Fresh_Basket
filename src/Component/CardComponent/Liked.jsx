@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import { Heart } from 'lucide-react'
 //* import the toast 
 import toast from 'react-hot-toast';
-function Liked() {
+
+//! import the context 
+import { WishlistContext } from '../../Context/WishlistContext';
+function Liked({featured}) {
     const [liked , setLiked ] = useState(false );
-    const [clicked , setClicked]= useState(true);
+    const [clicked , setClicked]= useState(false);
+    const { addToWishlist,removeFromWishlist} = useContext(WishlistContext);
     function handler()
     {
-      setLiked(!liked);
+      const newLiked = !liked;    //using it bcz react compleintg after function updating the val of liked and clicked 
+      setLiked(newLiked);
       setClicked(!clicked);
-      {clicked?(toast.success("Added to wishlist")):(toast.error("Removed from wishlist"))}
+      if (newLiked) {
+        addToWishlist(featured);
+        toast.success("Added to wishlist");
+      } else {
+        removeFromWishlist(featured.id);
+        toast.error("Removed from wishlist");
+      }
     }
   return (
     <div>

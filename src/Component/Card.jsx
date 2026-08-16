@@ -10,14 +10,14 @@ import DetailsCard from './DetailsCard';
 
 function Card({featured}) {
     const [open , setOpen]=useState(false);
-  return (
+    return (
     <div >
         <div className='group flex flex-col bg-white rounded-2xl border border-[#1c1a161a] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300  '>
             {/* top image  */}
             <div className={` bg-gradient-to-br ${featured.bg} relative h-44 flex items-center justify-center `} >
                 <div className='text-7xl group-hover:scale-110 select-none transition-all duration-300'>{featured.emoji}</div>
                 <Badge featured={featured}/>
-                <Liked  />
+                <Liked featured={featured} />
             </div>
             {/* bottom part info   */}
             <div className='p-4 flex flex-col gap-2 '>

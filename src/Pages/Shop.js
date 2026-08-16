@@ -1,16 +1,20 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import { products , CATEGORIES } from '../data'
 import Card from '../Component/Card'
 import Footer from '../Component/Footer'
 import { Search , ChevronDown } from 'lucide-react'
+import { WishlistContext } from '../Context/WishlistContext'
 
 function Shop() {
   const [selectedCategory , setSelectedCategory]=useState("All");
-  
+  const { wishlist } = useContext(WishlistContext);
+
   const filteredProducts = selectedCategory === "All" 
     ? products 
-    : products.filter(product => product.category === selectedCategory);
+    : selectedCategory === "❤️ Wishlist" 
+      ? wishlist 
+      : products.filter(product => product.category === selectedCategory);
   
   return (
     <div>
