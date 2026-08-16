@@ -6,6 +6,7 @@ export const WishlistContext=createContext();
 //s-2 provider 
 export default function  WishlistProvider({children})
 {
+    const [selectedCategory , setSelectedCategory]=useState("All");
     const [wishlist , setWishlist]= useState([]);
     //! function 
     function addToWishlist(product) 
@@ -20,7 +21,9 @@ export default function  WishlistProvider({children})
     {
         wishlist,
         addToWishlist,
-        removeFromWishlist
+        removeFromWishlist,
+        selectedCategory,
+        setSelectedCategory,
     }
 
     //s-3 consume 

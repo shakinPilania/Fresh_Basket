@@ -8,8 +8,8 @@ import { Search , ChevronDown } from 'lucide-react'
 import { WishlistContext } from '../Context/WishlistContext'
 
 function Shop() {
-  const [selectedCategory , setSelectedCategory]=useState("All");
-  const { wishlist } = useContext(WishlistContext);
+  
+  const { wishlist, selectedCategory,setSelectedCategory } = useContext(WishlistContext);
   // const [flag , setFlag] = useState(false);
   const filteredProducts = selectedCategory === "All" 
     ? products 
@@ -17,16 +17,7 @@ function Shop() {
       ? wishlist 
       : products.filter(product => product.category === selectedCategory);
   
-  // function exception()
-  // {
-  //   if(selectedCategory === "❤️ Wishlist" && filteredProducts.length==0)
-  //       setFlag(true);
-  //   else 
-  //     setFlag(false);
-  // }
-
-  // useEffect(()=>{exception()},[selectedCategory])
-
+  
   return (
     <div>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10'>
