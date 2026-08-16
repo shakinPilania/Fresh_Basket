@@ -1,21 +1,32 @@
 import React, { useContext } from 'react'
-import { useState } from 'react'
+import { useState  } from 'react'
 import { products , CATEGORIES } from '../data'
 import Card from '../Component/Card'
 import Footer from '../Component/Footer'
+import WishlistEmpty from '../Component/WishlistEmpty'
 import { Search , ChevronDown } from 'lucide-react'
 import { WishlistContext } from '../Context/WishlistContext'
 
 function Shop() {
   const [selectedCategory , setSelectedCategory]=useState("All");
   const { wishlist } = useContext(WishlistContext);
-
+  // const [flag , setFlag] = useState(false);
   const filteredProducts = selectedCategory === "All" 
     ? products 
     : selectedCategory === "❤️ Wishlist" 
       ? wishlist 
       : products.filter(product => product.category === selectedCategory);
   
+  // function exception()
+  // {
+  //   if(selectedCategory === "❤️ Wishlist" && filteredProducts.length==0)
+  //       setFlag(true);
+  //   else 
+  //     setFlag(false);
+  // }
+
+  // useEffect(()=>{exception()},[selectedCategory])
+
   return (
     <div>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10'>
@@ -51,17 +62,29 @@ function Shop() {
           </div>
         </section>
         {/* regarding all listed vegetable  */}
-        <p className='text-sm mb-5 text-[#78716C] '>
-          here result be come 
-        </p>
-        <section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
+        {
+          (selectedCategory === "❤️ Wishlist" && filteredProducts.length === 0)?
+          (<p></p>):(<p className='text-sm mb-5 text-[#78716C] '>here result be come </p>)
+        }
+          
+        
+        
           {
-              filteredProducts.map((product)=>
-              {
-                return <Card key={product.id} featured={product} />
-              })
+              selectedCategory === "❤️ Wishlist" && filteredProducts.length === 0 ? (
+                <div className="flex justify-center items-center min-h-[300px]">
+                  <WishlistEmpty setSelectedCategory={setSelectedCategory} />
+                </div>
+              ) : (
+                <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+                  {
+                    filteredProducts.map((product) => (
+                      <Card key={product.id} featured={product} />
+                    ))
+                  }
+                </section>
+              )
           }
-        </section>
+       
       </div>
       <Footer/>
     </div>
