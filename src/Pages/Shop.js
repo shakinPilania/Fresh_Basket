@@ -7,6 +7,11 @@ import { Search , ChevronDown } from 'lucide-react'
 
 function Shop() {
   const [selectedCategory , setSelectedCategory]=useState("All");
+  
+  const filteredProducts = selectedCategory === "All" 
+    ? products 
+    : products.filter(product => product.category === selectedCategory);
+  
   return (
     <div>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10'>
@@ -36,7 +41,7 @@ function Shop() {
           <div className='flex gap-2 pb-2 mb-8 overflow-x-auto scrollbar-hide'>
               {
                 CATEGORIES.map((category)=>
-                  <button onClick={()=>setSelectedCategory(category)} key={category} className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${selectedCategory===category?"bg-green-600 text-white shadow-md   ":"bg-white border border-[#1c1a161a] text-stone-600 hover:border-green-300"}  `} >{category}</button>
+                  <button onClick={() => setSelectedCategory(category)} key={category} className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${selectedCategory===category?"bg-green-600 text-white shadow-md   ":"bg-white border border-[#1c1a161a] text-stone-600 hover:border-green-300"}  `} >{category}</button>
                 )
               }
           </div>
@@ -47,7 +52,7 @@ function Shop() {
         </p>
         <section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5'>
           {
-              products.map((product)=>
+              filteredProducts.map((product)=>
               {
                 return <Card key={product.id} featured={product} />
               })
