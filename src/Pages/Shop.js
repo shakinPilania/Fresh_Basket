@@ -1,9 +1,12 @@
 import React from 'react'
-import { products } from '../data'
+import { useState } from 'react'
+import { products , CATEGORIES } from '../data'
 import Card from '../Component/Card'
 import Footer from '../Component/Footer'
+import { Search , ChevronDown } from 'lucide-react'
 
 function Shop() {
+  const [selectedCategory , setSelectedCategory]=useState("All");
   return (
     <div>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10'>
@@ -14,7 +17,30 @@ function Shop() {
           <p className='mt-2 text-[#78716C] plusJakarta'>Handpicked from local farms, delivered fresh daily.</p>
         </section>
         {/* regarding filter  */}
-        <section className='mb-8'></section>
+        <section className=' flex flex-col  gap-5 mb-6'>
+          <div className='flex items-center gap-2 ' >
+            <div className='relative flex-1 2'>
+              <Search size={18} className='absolute left-3 top-1/2 -translate-y-1/2 text-[#78716C]' />
+              <input type='text' placeholder='Search Veggies' className='w-full pl-9 pr-4 py-2.5 bg-white border border-[#1c1a161a] rounded-2xl text-sm focus:outline-none focus:ring-2  focus:ring-green-500 focus:border-green-400 transition-all' />
+            </div>
+            <div className='relative'>
+              <select className='appearance-none pl-4 pr-9 py-2.5 bg-white border border-[#1c1a161a] rounded-xl text-sm font-medium focus:outline-none focus:ring-2  focus:ring-green-500 cursor-pointer   '>
+                <option>Sort: Default</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Top Rated</option>
+              </select>
+              <ChevronDown  size={14} className='absolute right-3 top-1/2 -translate-y-1/2 text-[#78716C] pointer-events-none'/>
+            </div>
+          </div>
+          <div className='flex gap-2 pb-2 mb-8 overflow-x-auto scrollbar-hide'>
+              {
+                CATEGORIES.map((category)=>
+                  <button onClick={()=>setSelectedCategory(category)} key={category} className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${selectedCategory===category?"bg-green-600 text-white shadow-md   ":"bg-white border border-[#1c1a161a] text-stone-600 hover:border-green-300"}  `} >{category}</button>
+                )
+              }
+          </div>
+        </section>
         {/* regarding all listed vegetable  */}
         <p className='text-sm mb-5 text-[#78716C] '>
           here result be come 
@@ -27,7 +53,6 @@ function Shop() {
               })
           }
         </section>
-        
       </div>
       <Footer/>
     </div>
