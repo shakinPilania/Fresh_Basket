@@ -28,7 +28,7 @@ function Footer() {
           <div className="flex flex-row gap-3 text-white items-center " >
             <button className="w-8 h-8 rounded-lg bg-stone-800 hover:bg-green-600 transition-all duration-300" ><FaInstagram  className="w-full mx-auto " size={20} /></button>
             <button className="w-8 h-8 rounded-lg bg-stone-800 hover:bg-green-600 transition-all duration-300"  ><a href="https://github.com/shakinPilania"><FaGithub className="w-full mx-auto "  size={20}/></a></button>
-            <button className="w-8 h-8 rounded-lg bg-stone-800 hover:bg-green-600 transition-all duration-300"  ><FaFacebook className="w-full mx-auto "  size={20}/></button>
+            <button className="w-8 h-8 rounded-lg bg-stone-800 hover:bg-green-600 transition-all duration-300"  ><a href='https://leetcode.com/u/shakin28006/'><FaFacebook className="w-full mx-auto "  size={20}/></a></button>
           </div>
         </div>
         {/* left most  */}

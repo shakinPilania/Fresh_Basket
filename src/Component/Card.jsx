@@ -8,7 +8,7 @@ import Badge from './CardComponent/Badge';
 import Liked from './CardComponent/Liked';
 import DetailsCard from './DetailsCard';
 
-function Card({featured}) {
+function Card({featured,doThis}) {
     const [open , setOpen]=useState(false);
     return (
     <div >
@@ -17,7 +17,9 @@ function Card({featured}) {
             <div className={` bg-gradient-to-br ${featured.bg} relative h-44 flex items-center justify-center `} >
                 <div className='text-7xl group-hover:scale-110 select-none transition-all duration-300'>{featured.emoji}</div>
                 <Badge featured={featured}/>
-                <Liked featured={featured} />
+                {
+                    doThis && <Liked featured={featured} />
+                }
             </div>
             {/* bottom part info   */}
             <div className='p-4 flex flex-col gap-2 '>

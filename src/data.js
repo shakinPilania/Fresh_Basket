@@ -46,6 +46,7 @@ export const products = [
   { id: 34, name: "Brinjal", emoji: "🍆", price: 1.49, unit: "kg", category: "Fruit Vegs", rating: 4.5, reviews: 82, description: "Fresh, tender brinjals with a smooth texture and rich flavour. Perfect for curries, roasting, grilling, frying, and traditional Indian dishes.", bg: "from-purple-100 to-violet-50" },
 
   { id: 35, name: "Potato", emoji: "🥔", price: 1.09, unit: "kg", category: "Root Vegs", rating: 4.7, reviews: 156, description: "Fresh, versatile potatoes with a naturally earthy flavour. Perfect for fries, curries, roasting, mashing, and everyday cooking.", bg: "from-stone-100 to-amber-50" },
+  
 ];
 
 export const CATEGORIES = ["All", "Fruit Vegs", "Leafy Greens", "Root Vegs", "Brassicas", "Aromatics", "Legumes", "Fungi", "Grains", "Citrus", "❤️ Wishlist"];
