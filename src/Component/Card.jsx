@@ -7,7 +7,7 @@ import {Star} from 'lucide-react'
 import Badge from './CardComponent/Badge';
 import Liked from './CardComponent/Liked';
 import DetailsCard from './DetailsCard';
-
+import StarCom from './CardComponent/StarCom';
 function Card({featured,doThis}) {
     const [open , setOpen]=useState(false);
     return (
@@ -26,13 +26,14 @@ function Card({featured,doThis}) {
                 <p className='text-xs font-medium tracking-wider text-[#78716C] plusJakarta uppercase playfair '>{featured.category}</p>
                 <h3 className='font-bold text-base leading-tight text-foreground mt-1 '>{featured.name}</h3>
                 <div className='flex items-center'>
-                    <div className='flex flex-row items-center'>
+                    {/* <div className='flex flex-row items-center'>
                         <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
                         <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
                         <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
                         <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
                         <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
-                    </div>
+                    </div> */}
+                    <StarCom num={featured.reviews} />
                     <span className='text-xs text-[#78716C] plusJakarta' >({featured.reviews})</span>
                 </div>
                 <p className='plusJakarta text-[#78716C] text-xs leading-relaxed ' >{featured.description}</p>

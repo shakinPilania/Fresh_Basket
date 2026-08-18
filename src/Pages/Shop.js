@@ -10,12 +10,34 @@ import { WishlistContext } from '../Context/WishlistContext'
 function Shop() {
   
   const { wishlist, selectedCategory,setSelectedCategory } = useContext(WishlistContext);
+  const [searchData, setSearchData]=useState("");
   // const [flag , setFlag] = useState(false);
-  const filteredProducts = selectedCategory === "All" 
-    ? products 
-    : selectedCategory === "❤️ Wishlist" 
-      ? wishlist 
-      : products.filter(product => product.category === selectedCategory);
+  function searchChange(event)
+  {
+    setSearchData(event.target.value);
+    // filteredProducts=products.filter(product => product.name === searchData);
+  }
+  // const matchSearch=products.filter((product)=>product.name==searchData);
+  // const filteredProducts = selectedCategory === "All" 
+  //   ? products 
+  //   : selectedCategory === "❤️ Wishlist" 
+  //     ? wishlist 
+  //     : products.filter(product => product.category === selectedCategory);
+
+  const matchSearch = products.filter(product =>
+  product.name.toLowerCase().includes(searchData.toLowerCase())
+);
+
+const searchFlag = matchSearch.length > 0;
+
+const filteredProducts =
+  searchData !== "" && searchFlag
+    ? matchSearch
+    : selectedCategory === "All"
+      ? products
+      : selectedCategory === "❤️ Wishlist"
+        ? wishlist
+        : products.filter(product => product.category === selectedCategory);
   
   
   return (
@@ -32,7 +54,7 @@ function Shop() {
           <div className='flex items-center gap-2 ' >
             <div className='relative flex-1 2'>
               <Search size={18} className='absolute left-3 top-1/2 -translate-y-1/2 text-[#78716C]' />
-              <input type='text' placeholder='Search Veggies' className='w-full pl-9 pr-4 py-2.5 bg-white border border-[#1c1a161a] rounded-2xl text-sm focus:outline-none focus:ring-2  focus:ring-green-500 focus:border-green-400 transition-all' />
+              <input type='text' onChange={searchChange} value={searchData} placeholder='Search Veggies' className='w-full pl-9 pr-4 py-2.5 bg-white border border-[#1c1a161a] rounded-2xl text-sm focus:outline-none focus:ring-2  focus:ring-green-500 focus:border-green-400 transition-all' />
             </div>
             <div className='relative'>
               <select className='appearance-none pl-4 pr-9 py-2.5 bg-white border border-[#1c1a161a] rounded-xl text-sm font-medium focus:outline-none focus:ring-2  focus:ring-green-500 cursor-pointer   '>
