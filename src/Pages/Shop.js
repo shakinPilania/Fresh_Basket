@@ -3,6 +3,7 @@ import { useState  } from 'react'
 import { products , CATEGORIES } from '../data'
 import Card from '../Component/Card'
 import Footer from '../Component/Footer'
+import SearchEmpty from '../Component/SearchEmpty'
 import WishlistEmpty from '../Component/WishlistEmpty'
 import { Search , ChevronDown } from 'lucide-react'
 import { WishlistContext } from '../Context/WishlistContext'
@@ -11,27 +12,17 @@ function Shop() {
   
   const { wishlist, selectedCategory,setSelectedCategory } = useContext(WishlistContext);
   const [searchData, setSearchData]=useState("");
-  // const [flag , setFlag] = useState(false);
-  function searchChange(event)
-  {
-    setSearchData(event.target.value);
-    // filteredProducts=products.filter(product => product.name === searchData);
-  }
-  // const matchSearch=products.filter((product)=>product.name==searchData);
-  // const filteredProducts = selectedCategory === "All" 
-  //   ? products 
-  //   : selectedCategory === "❤️ Wishlist" 
-  //     ? wishlist 
-  //     : products.filter(product => product.category === selectedCategory);
+  const [sortData , setSortData]=useState("");
+
 
   const matchSearch = products.filter(product =>
   product.name.toLowerCase().includes(searchData.toLowerCase())
 );
 
-const searchFlag = matchSearch.length > 0;
+// const searchFlag = matchSearch.length > 0;
 
 const filteredProducts =
-  searchData !== "" && searchFlag
+  searchData !== ""
     ? matchSearch
     : selectedCategory === "All"
       ? products
@@ -54,10 +45,10 @@ const filteredProducts =
           <div className='flex items-center gap-2 ' >
             <div className='relative flex-1 2'>
               <Search size={18} className='absolute left-3 top-1/2 -translate-y-1/2 text-[#78716C]' />
-              <input type='text' onChange={searchChange} value={searchData} placeholder='Search Veggies' className='w-full pl-9 pr-4 py-2.5 bg-white border border-[#1c1a161a] rounded-2xl text-sm focus:outline-none focus:ring-2  focus:ring-green-500 focus:border-green-400 transition-all' />
+              <input type='text' onChange={(event)=>setSearchData(event.target.value)} value={searchData} placeholder='Search Veggies' className='w-full pl-9 pr-4 py-2.5 bg-white border border-[#1c1a161a] rounded-2xl text-sm focus:outline-none focus:ring-2  focus:ring-green-500 focus:border-green-400 transition-all' />
             </div>
             <div className='relative'>
-              <select className='appearance-none pl-4 pr-9 py-2.5 bg-white border border-[#1c1a161a] rounded-xl text-sm font-medium focus:outline-none focus:ring-2  focus:ring-green-500 cursor-pointer   '>
+              <select value={sortData} onClick={(event)=>setSortData(event.target.value)} className='appearance-none pl-4 pr-9 py-2.5 bg-white border border-[#1c1a161a] rounded-xl text-sm font-medium focus:outline-none focus:ring-2  focus:ring-green-500 cursor-pointer   '>
                 <option>Sort: Default</option>
                 <option>Price: Low to High</option>
                 <option>Price: High to Low</option>
@@ -76,6 +67,7 @@ const filteredProducts =
         </section>
         {/* regarding all listed vegetable  */}
         {
+          (filteredProducts.length === 0 && selectedCategory !== "❤️ Wishlist" )?(<SearchEmpty setSearchData={setSearchData} />):
           (selectedCategory === "❤️ Wishlist" && filteredProducts.length === 0)?
           (<p></p>):(<p className='text-sm mb-5 text-[#78716C] '>here result be come </p>)
         }
@@ -83,7 +75,7 @@ const filteredProducts =
         
         
           {
-              selectedCategory === "❤️ Wishlist" && filteredProducts.length === 0 ? (
+              (selectedCategory === "❤️ Wishlist" && filteredProducts.length === 0) ? (
                 <div className="flex justify-center items-center min-h-[300px]">
                   <WishlistEmpty setSelectedCategory={setSelectedCategory} />
                 </div>
