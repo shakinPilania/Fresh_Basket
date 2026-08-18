@@ -22,7 +22,7 @@ function FeatureHome({featureds}) {
                 {
                     featureds.map((featured)=>
                     {
-                        return <Card key={featured.id} featured={featured} doThis={false} />
+                        return <Card key={featured.id} featured={featured}  />
                     })
                 }
             </div>

@@ -21,14 +21,12 @@ function Shop() {
 
 // const searchFlag = matchSearch.length > 0;
 
-const filteredProducts =
+const filteredProducts =selectedCategory === "❤️ Wishlist"?wishlist:
   searchData !== ""
     ? matchSearch
     : selectedCategory === "All"
       ? products
-      : selectedCategory === "❤️ Wishlist"
-        ? wishlist
-        : products.filter(product => product.category === selectedCategory);
+      :  products.filter(product => product.category === selectedCategory);
   
   
   return (
@@ -71,8 +69,6 @@ const filteredProducts =
           (selectedCategory === "❤️ Wishlist" && filteredProducts.length === 0)?
           (<p></p>):(<p className='text-sm mb-5 text-[#78716C] '>here result be come </p>)
         }
-          
-        
         
           {
               (selectedCategory === "❤️ Wishlist" && filteredProducts.length === 0) ? (
@@ -83,7 +79,7 @@ const filteredProducts =
                 <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                   {
                     filteredProducts.map((product) => (
-                      <Card key={product.id} featured={product} doThis={true} />
+                      <Card  key={product.id} featured={product} doThis={true}   />
                     ))
                   }
                 </section>

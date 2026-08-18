@@ -17,11 +17,16 @@ export default function  WishlistProvider({children})
     {
         setWishlist(prev =>prev.filter(item => item.id !== id));
     }
+    function isExist(id2)
+    {
+        return wishlist.some((product)=>product.id==id2);
+    }
     const value=
     {
         wishlist,
         addToWishlist,
         removeFromWishlist,
+        isExist,
         selectedCategory,
         setSelectedCategory,
     }

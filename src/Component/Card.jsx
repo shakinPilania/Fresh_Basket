@@ -8,31 +8,26 @@ import Badge from './CardComponent/Badge';
 import Liked from './CardComponent/Liked';
 import DetailsCard from './DetailsCard';
 import StarCom from './CardComponent/StarCom';
-function Card({featured,doThis}) {
+
+
+function Card({featured}) {
+
     const [open , setOpen]=useState(false);
     return (
     <div >
-        <div className='group flex flex-col bg-white rounded-2xl border border-[#1c1a161a] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300  '>
+        <div  className='group flex flex-col bg-white rounded-2xl border border-[#1c1a161a] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300  '>
             {/* top image  */}
             <div className={` bg-gradient-to-br ${featured.bg} relative h-44 flex items-center justify-center `} >
                 <div className='text-7xl group-hover:scale-110 select-none transition-all duration-300'>{featured.emoji}</div>
                 <Badge featured={featured}/>
-                {
-                    doThis && <Liked featured={featured} />
-                }
+                <Liked featured={featured}  />
+                
             </div>
             {/* bottom part info   */}
             <div className='p-4 flex flex-col gap-2 '>
                 <p className='text-xs font-medium tracking-wider text-[#78716C] plusJakarta uppercase playfair '>{featured.category}</p>
                 <h3 className='font-bold text-base leading-tight text-foreground mt-1 '>{featured.name}</h3>
                 <div className='flex items-center'>
-                    {/* <div className='flex flex-row items-center'>
-                        <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
-                        <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
-                        <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
-                        <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
-                        <div><Star size={12} className='fill-amber-400 text-amber-400'/></div>
-                    </div> */}
                     <StarCom num={featured.reviews} />
                     <span className='text-xs text-[#78716C] plusJakarta' >({featured.reviews})</span>
                 </div>
