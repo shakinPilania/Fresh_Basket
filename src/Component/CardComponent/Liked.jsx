@@ -15,9 +15,10 @@ function Liked({featured}) {
     const [liked , setLiked ] = useState(false);
     // const [clicked , setClicked]= useState(false);
     const[isThere , setThere]=useState();
-    const { addToWishlist,removeFromWishlist,isExist} = useContext(WishlistContext);
+    const { addToWishlist,removeFromWishlist,isExist , selectedCategory} = useContext(WishlistContext);
+    const present =(selectedCategory==="❤️ Wishlist");
     useEffect(()=>{setLiked(isExist(featured.id))})
-    // const present=category==="❤️ Wishlist"&&liked;
+    
     function handler()
     {
       const check=isExist(featured.id);
@@ -37,7 +38,15 @@ function Liked({featured}) {
     }
   return (
     <div>
-      <button onClick={handler} className=' absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex justify-center items-center hover:scale-110 transition-all duration-300 ' ><Heart size={18} className={liked?('fill-red-500 text-red-500'):('text-stone-400')} /></button>
+      {
+        liked && present &&
+        <button onClick={handler} className=' absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex justify-center items-center hover:scale-110 transition-all duration-300 ' ><Trash2 size={18} className='hover:text-red-800 cursor-pointer transition-colors'  /></button>
+      }
+      {
+        !present && 
+        <button onClick={handler} className=' absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex justify-center items-center hover:scale-110 transition-all duration-300 ' ><Heart size={18} className={liked?('fill-red-500 text-red-500'):('text-stone-400')} /></button>
+      }
+      
     </div>
   )
 }
