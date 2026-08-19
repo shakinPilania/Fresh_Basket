@@ -72,7 +72,7 @@ const filteredProducts = selectedCategory === "❤️ Wishlist" ? wishlist :
         {
           (sortedProducts.length === 0 && selectedCategory !== "❤️ Wishlist" )?(<SearchEmpty setSearchData={setSearchData} />):
           (selectedCategory === "❤️ Wishlist" && sortedProducts.length === 0)?
-          (<p></p>):(<p className='text-sm mb-5 text-[#78716C] '>here result be come </p>)
+          (<p></p>):(<p className='text-sm mb-5 text-[#78716C] plusJakarta '><span className="font-bold text-[15px]" >{sortedProducts.length}</span> Product Found </p>)
         }
         
           {
