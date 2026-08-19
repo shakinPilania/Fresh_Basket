@@ -1,4 +1,5 @@
 export const products = [
+
   { id: 1, name: "Organic Tomatoes", emoji: "🍅", price: 2.49, unit: "kg", category: "Fruit Vegs", rating: 4.8, reviews: 124, description: "Sun-ripened, vine-fresh tomatoes bursting with flavour. Perfect for salads, sauces.", badge: "Bestseller", badgeColor: "bg-amber-100 text-amber-800", bg: "from-red-100 to-orange-50" },
 
   { id: 2, name: "Baby Spinach", emoji: "🥬", price: 1.99, unit: "bunch", category: "Leafy Greens", rating: 4.7, reviews: 98, description: "Tender baby spinach leaves, rich in iron and vitamins. Great for smoothies and salads.", badge: "Organic", badgeColor: "bg-green-100 text-green-800", bg: "from-green-100 to-emerald-50" },
@@ -46,8 +47,8 @@ export const products = [
   { id: 34, name: "Brinjal", emoji: "🍆", price: 1.49, unit: "kg", category: "Fruit Vegs", rating: 4.5, reviews: 82, description: "Fresh, tender brinjals with a smooth texture and rich flavour. Perfect for curries, roasting, grilling, frying, and traditional Indian dishes.", bg: "from-purple-100 to-violet-50" },
 
   { id: 35, name: "Potato", emoji: "🥔", price: 1.09, unit: "kg", category: "Root Vegs", rating: 4.7, reviews: 156, description: "Fresh, versatile potatoes with a naturally earthy flavour. Perfect for fries, curries, roasting, mashing, and everyday cooking.", bg: "from-stone-100 to-amber-50" },
-  
-];
+
+]; 
 
 export const CATEGORIES = ["All", "Fruit Vegs", "Leafy Greens", "Root Vegs", "Brassicas", "Aromatics", "Legumes", "Fungi", "Grains", "Citrus", "❤️ Wishlist"];
 

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useState  } from 'react'
+import { useState } from 'react'
 import { products , CATEGORIES } from '../data'
 import Card from '../Component/Card'
 import Footer from '../Component/Footer'
@@ -12,7 +12,7 @@ function Shop() {
   
   const { wishlist, selectedCategory,setSelectedCategory } = useContext(WishlistContext);
   const [searchData, setSearchData]=useState("");
-  const [sortData , setSortData]=useState("");
+  const [sortData , setSortData]=useState("default");
 
 
   const matchSearch = products.filter(product =>
@@ -21,14 +21,19 @@ function Shop() {
 
 // const searchFlag = matchSearch.length > 0;
 
-const filteredProducts =selectedCategory === "❤️ Wishlist"?wishlist:
+const filteredProducts = selectedCategory === "❤️ Wishlist" ? wishlist :
   searchData !== ""
     ? matchSearch
     : selectedCategory === "All"
       ? products
       :  products.filter(product => product.category === selectedCategory);
-  
-  
+
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    if (sortData === "rate") return b.rating - a.rating;
+    if (sortData === "low to high") return a.price - b.price;
+    if (sortData === "high to low") return b.price - a.price;
+    return a.id - b.id;
+  });
   return (
     <div>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10'>
@@ -46,11 +51,11 @@ const filteredProducts =selectedCategory === "❤️ Wishlist"?wishlist:
               <input type='text' onChange={(event)=>setSearchData(event.target.value)} value={searchData} placeholder='Search Veggies' className='w-full pl-9 pr-4 py-2.5 bg-white border border-[#1c1a161a] rounded-2xl text-sm focus:outline-none focus:ring-2  focus:ring-green-500 focus:border-green-400 transition-all' />
             </div>
             <div className='relative'>
-              <select value={sortData} onClick={(event)=>setSortData(event.target.value)} className='appearance-none pl-4 pr-9 py-2.5 bg-white border border-[#1c1a161a] rounded-xl text-sm font-medium focus:outline-none focus:ring-2  focus:ring-green-500 cursor-pointer   '>
-                <option>Sort: Default</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-                <option>Top Rated</option>
+              <select value={sortData} onChange={(event)=>setSortData(event.target.value)} className='appearance-none pl-4 pr-9 py-2.5 bg-white border border-[#1c1a161a] rounded-xl text-sm font-medium focus:outline-none focus:ring-2  focus:ring-green-500 cursor-pointer   '>
+                <option value="default" >Sort: Default</option>
+                <option value="low to high" >Price: Low to High</option>
+                <option value="high to low">Price: High to Low</option>
+                <option value="rate">Top Rated</option>
               </select>
               <ChevronDown  size={14} className='absolute right-3 top-1/2 -translate-y-1/2 text-[#78716C] pointer-events-none'/>
             </div>
@@ -65,20 +70,20 @@ const filteredProducts =selectedCategory === "❤️ Wishlist"?wishlist:
         </section>
         {/* regarding all listed vegetable  */}
         {
-          (filteredProducts.length === 0 && selectedCategory !== "❤️ Wishlist" )?(<SearchEmpty setSearchData={setSearchData} />):
-          (selectedCategory === "❤️ Wishlist" && filteredProducts.length === 0)?
+          (sortedProducts.length === 0 && selectedCategory !== "❤️ Wishlist" )?(<SearchEmpty setSearchData={setSearchData} />):
+          (selectedCategory === "❤️ Wishlist" && sortedProducts.length === 0)?
           (<p></p>):(<p className='text-sm mb-5 text-[#78716C] '>here result be come </p>)
         }
         
           {
-              (selectedCategory === "❤️ Wishlist" && filteredProducts.length === 0) ? (
+              (selectedCategory === "❤️ Wishlist" && sortedProducts.length === 0) ? (
                 <div className="flex justify-center items-center min-h-[300px]">
                   <WishlistEmpty setSelectedCategory={setSelectedCategory} />
                 </div>
               ) : (
                 <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                   {
-                    filteredProducts.map((product) => (
+                    sortedProducts.map((product) => (
                       <Card  key={product.id} featured={product} />
                     ))
                   }
