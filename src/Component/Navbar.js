@@ -1,13 +1,15 @@
-import React from 'react'
-import { Link,NavLink } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { Leaf ,Home,ShoppingBag, Info, MessageSquare ,ShoppingBasket } from 'lucide-react'
 
 //! import the css file of navbar 
 import "./Navbar.css"
 
+//! import the context API 
+import { CartContext } from '../Context/CartContext'
 function Navbar() {
-
+    const {totalCount} = useContext(CartContext);
     const navigate=useNavigate();
     function HomeBack()
     {
@@ -54,9 +56,13 @@ function Navbar() {
         {/* basket part  */}
         <div>
             <NavLink to={"/basket"} >
-                <div className='flex justify-center items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-sm text-white bg-green-600 hover:bg-green-700 plusJakarta text-sm transition-all duration-300 ml-2 sm:ml-3'>
+                <div className='flex relative justify-center items-center gap-2 px-4 py-2 rounded-xl font-semibold shadow-sm text-white bg-green-600 hover:bg-green-700 plusJakarta text-sm transition-all duration-300 ml-2 sm:ml-3'>
                     <span><ShoppingBasket size={17}/></span>
                     <button className='cursor-pointer hidden md:block'>Basket</button>
+                    {
+                        totalCount>0 && 
+                        <span className='absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center shadow text-xs font-bold text-white bg-amber-400 ' >{totalCount}</span>
+                    }
                 </div>
             </NavLink>
         </div>

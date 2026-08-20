@@ -6,6 +6,7 @@ export const CartContext = createContext();
 //s-2 initalize 
 export default function  CartProvider({children})
 {
+    const [totalCount , setTotalCount] = useState(0);
     const [basketData , setBasketData] = useState([]);
 
     function isPresent(id)
@@ -15,9 +16,24 @@ export default function  CartProvider({children})
 
     function addToBasket(product)
     {
+        setTotalCount((prev)=>prev+1);
         //if it not present than 
         if(!isPresent(product.id))
+        {
             setBasketData((prev)=>[...prev , product]);
+        }
+        else 
+        {
+            // product.countQty.count+=1;
+
+            setBasketData((prev)=>
+            {
+                let newData=[...prev];
+                let item = newData.find(item => item.id===product.id)
+                item.countQty.count+=1; 
+                return newData;
+            })
+        }
     }
     function removeFrmBasket(id)
     {
@@ -30,6 +46,7 @@ export default function  CartProvider({children})
         addToBasket ,
         isPresent ,
         removeFrmBasket ,
+        totalCount,
     }
 
     //s-3 provide the context or return it 

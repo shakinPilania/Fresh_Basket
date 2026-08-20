@@ -17,12 +17,16 @@ import StarCom from './CardComponent/StarCom';
 function Card({featured,category}) {
 
     const [open , setOpen]=useState(false);
-    const {addToBasket , basketData} = useContext(CartContext);
+    const {addToBasket,isPresent , basketData} = useContext(CartContext);
+    
+    const [count , setCount] = useState(0);
     function orderTo()
     {
-        addToBasket(featured);
-        console.log(basketData);
+        addToBasket({id:featured.id,name:featured.name , category :featured.category , unit:featured.unit , countQty:{count:1} , price:featured.price });
+        
     }
+
+
     return (
     <div >
         <div  className='group flex flex-col bg-white rounded-2xl border border-[#1c1a161a] shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300  '>
