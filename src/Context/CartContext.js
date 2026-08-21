@@ -13,31 +13,55 @@ export default function  CartProvider({children})
     {
         return basketData.some((product)=>product.id==id);
     }
-
-    function addToBasket(product)
+    function increment(product)
     {
-        setTotalCount((prev)=>prev+1);
-        //if it not present than 
-        if(!isPresent(product.id))
-        {
-            setBasketData((prev)=>[...prev , product]);
-        }
-        else 
-        {
-            // product.countQty.count+=1;
-
             setBasketData((prev)=>
             {
                 let newData=[...prev];
                 let item = newData.find(item => item.id===product.id)
                 item.countQty.count+=1; 
+                setTotalCount(prev=>prev+1)
+                return newData;
+            })
+    }
+    function decrement(product)
+    {
+        if(product.countQty.count==1)
+        {
+            // setTotalCount(prev=>prev-1)
+            removeFrmBasket(product);
+        }
+        else 
+        {
+            setTotalCount(prev=>prev-1)
+            setBasketData((prev)=>
+            {
+                let newData=[...prev];
+                let item = newData.find(item => item.id===product.id)
+                item.countQty.count-=1; 
                 return newData;
             })
         }
+        
     }
-    function removeFrmBasket(id)
+    function addToBasket(product)
     {
-        setBasketData((prev)=>prev.filter((itm)=>itm.id!=id));
+        
+        //if it not present than 
+        if(!isPresent(product.id))
+        {
+            setTotalCount((prev)=>prev+1);
+            setBasketData((prev)=>[...prev , product]);
+        }
+        else 
+        {
+            increment(product);
+        }
+    }
+    function removeFrmBasket(product)
+    {
+        setTotalCount(prev=> prev-product.countQty.count)
+        setBasketData((prev)=>prev.filter((itm)=>itm.id!=product.id));
     }
 
     const value =
@@ -47,6 +71,8 @@ export default function  CartProvider({children})
         isPresent ,
         removeFrmBasket ,
         totalCount,
+        increment , 
+        decrement,
     }
 
     //s-3 provide the context or return it 

@@ -22,7 +22,7 @@ function Card({featured,category}) {
     const [count , setCount] = useState(0);
     function orderTo()
     {
-        addToBasket({id:featured.id,name:featured.name , category :featured.category , unit:featured.unit , countQty:{count:1} , price:featured.price });
+        addToBasket({id:featured.id,name:featured.name , category :featured.category , unit:featured.unit , countQty:{count:1} , price:featured.price , emoji:featured.emoji });
         
     }
 
