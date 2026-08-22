@@ -14,6 +14,7 @@ function OrderSummary() {
   const subTotal = basketData.reduce((sum , product)=>sum + product.price * product.countQty.count, 0);
   const delivery = (30>subTotal)?(30-subTotal):(0);
   const navigate = useNavigate();
+  
   function checkingDelivery()
   {
     if(delivery==0)
