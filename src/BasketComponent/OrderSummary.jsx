@@ -1,12 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 //! imort the emoji 
-import { Minus , Plus , Trash2 , ArrowLeft } from 'lucide-react';
+import { Minus , Plus , Trash2 , ArrowLeft, Sun } from 'lucide-react';
+
+
 
 //! import the context 
 import { CartContext } from '../Context/CartContext'
 function OrderSummary() {
+  // const [total , setTotal]=useState(0);
   const {totalCount , basketData , increment , decrement , removeFrmBasket} = useContext(CartContext);
+  const subTotal = basketData.reduce((sum , product)=>sum + product.price * product.countQty.count,0)
+  const delivery = (30>subTotal)?(30-subTotal):(0);
   const navigate = useNavigate();
   return (
     <div>
@@ -51,7 +56,65 @@ function OrderSummary() {
           </div>
           
           {/* order summary  */}
-          <div>WORKING</div>
+          <div className=' flex flex-col bg-white rounded-2xl border border-[#1c1a161a] shadow-sm p-6 sticky top-24 '>
+            <h4 className='font-bold text-lg mb-5 playfair'>Order Summary</h4>
+            {/* item list  */}
+            <div className='space-y-2 mb-4 plusJakarta'>
+              {
+                basketData.map((product)=>(
+                  <div className='flex  text-sm justify-between items-center'>
+                    <p className='text-[#78716C]'>{product.name} x {product.countQty.count}</p>
+                    <p className='font-medium'>${(product.price * product.countQty.count).toFixed(2)}</p>
+                  </div>
+                ))
+              }
+            </div>
+            {/* line  */}
+            <div className='w-full h-[1px] bg-[#1c1a161a]  '></div>
+            {/* regaring the delivery  */}
+            <div className='flex flex-col space-y-3 mb-3'>
+              {/* subTotal  */}
+              <div className='pt-4 flex justify-between items-center text-sm  plusJakarta '>
+                <span className='text-[#78716C]'>Subtotal</span>
+                <span className='font-semibold'>${(subTotal).toFixed(2)}</span>
+              </div>
+              {/* delivery  */}
+              <div className='flex justify-between items-center text-sm plusJakarta'>
+                <span className='text-[#78716C]'>Delivery</span>
+                {
+                  delivery===0 && 
+                  <span className='text-green-600 font-semibold'>Free!</span>
+                }
+                {
+                  delivery!==0 && 
+                  <span className='font-semibold'>$4.99</span>
+                }
+              </div>
+              {/* extra information  */}
+              {
+                delivery!==0 && 
+                <div className='text-xs text-amber-600 flex justify-center  bg-amber-50 p-2 rounded-lg'>
+                  <span>Add ${(delivery).toFixed(2)}  more for free delivery</span>
+                </div>
+              }
+            </div>
+            {/* line  */}
+            <div className='w-full h-[1px] bg-[#1c1a161a]'></div>
+            
+            <div className='flex justify-between plusJakarta  items-center mb-6 pt-4 '>
+              <p className=' text-lg font-bold '>Total</p>
+              <span className=' font-bold text-green-700 text-2xl text-right'>${ (delivery==0)?(subTotal):(subTotal+4.99) }</span>
+            </div>
+            <div className='flex justify-between items-center gap-2'>
+              <input type='text' className='flex-1 px-3 py-2 border border-[#1c1a161a] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 ' placeholder='Promo code' />
+              <button className='px-4 py-2 text-stone-700 bg-stone-100 text-sm font-semibold rounded-xl hover:bg-stone-200 transition-colors cursor-pointer'>Apply</button>
+            </div>
+            <button className='w-full mt-4  bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition-colors shadow-md text-base'>Place Order: ${ (delivery==0)?(subTotal):(subTotal+4.99) } </button>
+            <div className='flex items-center justify-center gap-4 mt-4  text-xs plusJakarta '>
+              <p><span>🔒</span><span className='text-[#78716C]'>Secure checkout</span></p>
+              <p><span>📦</span><span className='text-[#78716C]'>2–4h delivery</span></p>
+            </div>
+          </div>
         </div>
       </section>
     </div>
