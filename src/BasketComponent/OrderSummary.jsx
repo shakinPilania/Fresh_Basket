@@ -1,18 +1,32 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 //! imort the emoji 
 import { Minus , Plus , Trash2 , ArrowLeft, Sun } from 'lucide-react';
 
-
+//! importing the toast 
+import {toast} from 'react-hot-toast';
 
 //! import the context 
 import { CartContext } from '../Context/CartContext'
 function OrderSummary() {
-  // const [total , setTotal]=useState(0);
+  const [coupon , setCoupon ] = useState("");
   const {totalCount , basketData , increment , decrement , removeFrmBasket} = useContext(CartContext);
-  const subTotal = basketData.reduce((sum , product)=>sum + product.price * product.countQty.count,0)
+  const subTotal = basketData.reduce((sum , product)=>sum + product.price * product.countQty.count, 0);
   const delivery = (30>subTotal)?(30-subTotal):(0);
   const navigate = useNavigate();
+  function checkingDelivery()
+  {
+    if(delivery==0)
+      toast.success(" 🎉 ! You’re eligible for free delivery" , {icon:null})
+  }
+  function couponHandler()
+  {
+    if(coupon==="")
+      toast.error(" Please enter a promo code")
+    else 
+      toast.error("⚠️ Coupon is currently unavailable ", {icon:null})
+  }
+  useEffect(()=>checkingDelivery(), [delivery])
   return (
     <div>
       <section className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 '>
@@ -22,7 +36,7 @@ function OrderSummary() {
           <h1 className='text-3xl font-bold playfair'>Your Basket<span className='ml-3 text-lg font-semibold text-[#78716C]'>({totalCount} items)</span></h1>
         </div>
         {/* about the Shop  */}
-        <div className='grid lg:grid-cols-3 gap-8 '>
+        <div className='grid lg:grid-cols-3 gap-8 items-start '>
           {/* card */}
           <div className='lg:col-span-2 space-y-3'>
             {
@@ -76,7 +90,7 @@ function OrderSummary() {
               {/* subTotal  */}
               <div className='pt-4 flex justify-between items-center text-sm  plusJakarta '>
                 <span className='text-[#78716C]'>Subtotal</span>
-                <span className='font-semibold'>${(subTotal).toFixed(2)}</span>
+                <span className='font-semibold'>${subTotal.toFixed(2)}</span>
               </div>
               {/* delivery  */}
               <div className='flex justify-between items-center text-sm plusJakarta'>
@@ -103,13 +117,13 @@ function OrderSummary() {
             
             <div className='flex justify-between plusJakarta  items-center mb-6 pt-4 '>
               <p className=' text-lg font-bold '>Total</p>
-              <span className=' font-bold text-green-700 text-2xl text-right'>${ (delivery==0)?(subTotal):(subTotal+4.99) }</span>
+              <span className=' font-bold text-green-700 text-2xl text-right'>${(delivery === 0 ? subTotal : subTotal + 4.99).toFixed(2)}</span>
             </div>
             <div className='flex justify-between items-center gap-2'>
-              <input type='text' className='flex-1 px-3 py-2 border border-[#1c1a161a] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 ' placeholder='Promo code' />
-              <button className='px-4 py-2 text-stone-700 bg-stone-100 text-sm font-semibold rounded-xl hover:bg-stone-200 transition-colors cursor-pointer'>Apply</button>
+              <input onChange={(event)=>setCoupon(event.target.value)} type='text' value={coupon}  className='flex-1 px-3 py-2 border border-[#1c1a161a] rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 ' placeholder='Promo code' />
+              <button className='px-4 py-2 text-stone-700 bg-stone-100 text-sm font-semibold rounded-xl hover:bg-stone-200 transition-colors cursor-pointer' onClick={couponHandler} >Apply</button>
             </div>
-            <button className='w-full mt-4  bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition-colors shadow-md text-base'>Place Order: ${ (delivery==0)?(subTotal):(subTotal+4.99) } </button>
+            <button onClick={()=>toast.success("🚚 Order placed! It’s on the way soon", {icon:null})} className='w-full mt-4  bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition-colors shadow-md text-base'>Place Order: ${ (delivery==0)?((subTotal).toFixed(2)):((subTotal+4.99).toFixed(2)) } </button>
             <div className='flex items-center justify-center gap-4 mt-4  text-xs plusJakarta '>
               <p><span>🔒</span><span className='text-[#78716C]'>Secure checkout</span></p>
               <p><span>📦</span><span className='text-[#78716C]'>2–4h delivery</span></p>
