@@ -27,7 +27,12 @@ FreshBasket is a simple and responsive **online vegetable-selling e-commerce web
 * CSS3
 
 ## Look Out 
-![FreshBasket Demo](./assets/freshbasket-demo.mp4)
+<img width="1898" height="797" alt="image" src="https://github.com/user-attachments/assets/231970d2-3616-45b6-b9ba-310ac9da78d3" />
+<img width="1897" height="847" alt="image" src="https://github.com/user-attachments/assets/07e380a5-d9a5-4672-ad3c-06c2353b7dc9" />
+<img width="1897" height="842" alt="image" src="https://github.com/user-attachments/assets/b00743d8-2ad2-4b02-850a-a88125563256" />
+
+
+
 
 ## React Concepts Used
 
